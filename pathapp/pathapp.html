@@ -1,0 +1,64 @@
+
+<html>
+	<head>
+		<script src="../Common/belt.js" type="text/javascript"></script>
+		<script src="../Common/math.js" type="text/javascript"></script>
+		<script src="ai.js" type="text/javascript"></script>
+		<script src="nav.js" type="text/javascript"></script>
+		<script src="grid.js" type="text/javascript"></script>
+		<script src="pathapp.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			
+			window.onload = function(e) {
+				var appMap = {
+
+					// The map of the world. An AI cannot
+					// stand on a wall represented by '#'.
+					// The AI entity starts at the position
+					// marked with an X.
+					map:[
+						"...............",
+						"...............",
+						"...............",
+						".....#.######..",
+						".....#.#.......",
+						".....#.#.......",
+						".....#.#.......",
+						".....#.#.......",
+						".....#.######..",
+						"...............",
+						"..#############",
+						".........#.....",
+						"..X......#.#...",
+						".........###...",
+						"..............."].join(""),
+						
+						//map:repeat('.',100).join(""),
+
+					// Dimensions of the map above.
+					width:  15,
+					height: 15
+				};
+
+				pathapp.init("parent",500,400,appMap);
+				pathapp.render();
+			};
+
+		</script>
+	</head>
+
+	<body>
+		<div id="parent"></div>
+		Nav Grid: <input id="navGridCheckBox" type="checkbox"></input><br>
+		AI Paths: <input id="aiPathCheckBox" type="checkbox"></input><br>
+		Touched Nodes: <input id="touchNodeCheckBox" type="checkbox"></input><br>
+
+		<select id="pathTypeSelect">
+			<option>Dijkstra</option>
+			<option>A* (Manhattan)</option>
+			<option>A* (Straight Line)</option>
+		</select>
+
+		Nodes Touched: <span id="nodeTouchMetric">0</span>
+	</body>
+</html>
